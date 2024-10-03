@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - player
+  - OneWayPlatform
+  - Platform
+  - Enemy
+  - Checkpoint
+  - CheckpointRangeCheck
+  - Audio
+  - SoundRange
+  - Boss
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Ground
+  - Water
+  - UI
+  - Attackable
+  - Wall
+  - Player
+  - Boss
+  - BossExtras
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Background
+    uniqueID: 4289258599
+    locked: 0
+  - name: Midground
+    uniqueID: 2801472563
+    locked: 0
+  - name: Foreground
+    uniqueID: 4181805117
+    locked: 0
+  - name: Entity
+    uniqueID: 1215924515
+    locked: 0
+  - name: Player
+    uniqueID: 3498471421
+    locked: 0
+  - name: Overlay
+    uniqueID: 2937756079
+    locked: 0
