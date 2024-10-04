@@ -476,7 +476,7 @@ public class PlayerController : MonoBehaviour
             // Instantiate the slash effect only if we hit an enemy
             // InstantiateSlashEffect();
 
-            HitStopTime(0.1f, 10, 0.1f); 
+            HitStopTime(0.1f, 10, 0.05f); 
 
             // Camera Shake
             GetComponent<CameraShake>().heavyCameraShakeEvent.Invoke();
