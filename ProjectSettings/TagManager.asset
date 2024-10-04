@@ -13,6 +13,7 @@ TagManager:
   - Audio
   - SoundRange
   - Boss
+  - Gravestone
   layers:
   - Default
   - TransparentFX

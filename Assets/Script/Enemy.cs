@@ -42,6 +42,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public Vector3 spawnPoint; // Set this in the Inspector or determine it programmatically
 
     [SerializeField] private GameObject playerObject;
+    private AudioManager audioManager;
     private UnityEvent bonfireUsedEvent;
 
     protected virtual void Start()
@@ -52,6 +53,7 @@ public class Enemy : MonoBehaviour
         startingHealth = health; // Store the starting health
         spawnPoint = transform.position;
 
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         bonfireUsedEvent = playerObject.GetComponent<BonfireBehaviour>().bonfireUsedEvent;
     }
 
@@ -131,6 +133,13 @@ public class Enemy : MonoBehaviour
     public virtual void EnemyHit(float _damageDone, Vector2 _hitDirection, float _hitForce)
     {
         health -= _damageDone;
+        
+        // [LOG2: SH]
+        audioManager.PlaySFX(audioManager.takedamage);
+
+        // Instantiate blood particles
+        Instantiate(bloodParticlePrefab, transform.position, Quaternion.identity);
+        
         if (!isRecoiling)
         {
             rb.velocity = _hitForce * recoilFactor * _hitDirection;

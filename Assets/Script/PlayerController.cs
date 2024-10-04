@@ -74,7 +74,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask attackableLayer; //the layer the player can attack and recoil off of
     [SerializeField] private LayerMask attackableBossLayer; //[LOG1:SH]
     [SerializeField] private float timeBetweenAttack;
+    [SerializeField] private float timeBetweenSpecialAttack;
     private float timeSinceAttack;
+    private float timeSinceSpecialAttack;
     [SerializeField] private float damage; //the damage the player does to an enemy
     [SerializeField] private float specialAttackDamage;
 
@@ -190,6 +192,7 @@ public class PlayerController : MonoBehaviour
             StartDash();
 
             Attack();
+            SpecialAttack();
             TopAttack();
         }
     }
@@ -237,6 +240,16 @@ public class PlayerController : MonoBehaviour
         
         rb.velocity = new Vector2(walkSpeed * xAxis, rb.velocity.y);
         anim.SetBool("Walking", rb.velocity.x != 0 && Grounded()); 
+    }
+
+    public void MakePlayerInvincible()
+    {
+        pState.invincible = true;
+    }
+
+    public void MakePlayerNotInvincible()
+    {
+        pState.invincible = false;
     }
 
     public void MakePlayerImmobile()
@@ -298,119 +311,177 @@ public class PlayerController : MonoBehaviour
     }
 
     void Attack()
-{
-    timeSinceAttack += Time.deltaTime;
-
-    if ((!Input.GetKey(KeyCode.W) && attack) && timeSinceAttack >= timeBetweenAttack)
     {
-        timeSinceAttack = 0;
-        anim.SetTrigger("Attacking");
-        audioManager.PlaySFX(audioManager.attack);
-        isAttacking = true; // Set attacking state
+        timeSinceAttack += Time.deltaTime;
 
-        rb.velocity = Vector2.zero;
+        if ((!Input.GetKey(KeyCode.W) && attack) && timeSinceAttack >= timeBetweenAttack)
+        {
+            timeSinceAttack = 0;
+            anim.SetTrigger("Attacking");
+            audioManager.PlaySFX(audioManager.attack);
+            isAttacking = true; // Set attacking state
 
-        // Side Attack Logic
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableLayer);
-        
-        // [LOG1:SH]
-        Collider2D[] hitBosses = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableBossLayer);
-        HandleAttack(hitEnemies);
-        HandleAttack(hitBosses);
+            rb.velocity = Vector2.zero;
+
+            // Side Attack Logic
+            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableLayer);
+            
+            // [LOG1:SH]
+            Collider2D[] hitBosses = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableBossLayer);
+            HandleAttack(hitEnemies);
+            HandleAttack(hitBosses);
+        }
     }
-    
-    if ((!Input.GetKey(KeyCode.W) && attack2) && timeSinceAttack >= timeBetweenAttack)
+
+    void SpecialAttack()
     {
-        timeSinceAttack = 0;
-        anim.SetTrigger("SpecialAttack");
-        rb.velocity = Vector2.zero;
+        timeSinceSpecialAttack += Time.deltaTime;
+        if ((!Input.GetKey(KeyCode.W) && attack2) && timeSinceSpecialAttack >= timeBetweenSpecialAttack)
+        {
+            timeSinceSpecialAttack = 0;
+            anim.SetTrigger("SpecialAttack");
+            
+            // set special attack sound here [LOG2: SH]
+            audioManager.PlaySFX(audioManager.attack);
+            
+            rb.velocity = Vector2.zero;
 
-        isAttacking = true; // Set attacking state
+            isAttacking = true; // Set attacking state
+        }
+    }
 
+    // called in the animation [LOG2: SH]
+    void performSpecialAttack()
+    {
         // Special Attack Logic [LOG1:SH]
         Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableLayer);
+        Collider2D[] hitEnemies2 = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableLayer);
 
         // [LOG1:SH]
         Collider2D[] hitBosses = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableBossLayer);
-        HandleAttack(hitEnemies);
-        HandleAttack(hitBosses);
-    }
-}
-public void StopAttack()
-{
-    isAttacking = false; // Stop dealing damage
-}
+        Collider2D[] hitBosses2 = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableBossLayer);
 
+        // up attack register first for special attack
+        HandleSpecialAttack(hitEnemies2);
+        HandleSpecialAttack(hitBosses2);
 
-
-private void InstantiateSlashEffect()
-{
-    // Create the slash effect instance at the player's position
-    GameObject slashEffect = Instantiate(slashEffectPrefab, attackPoint.position, Quaternion.identity);
-    // Optionally, you can set the effect to face the right direction
-    slashEffect.transform.localScale = new Vector3(transform.localScale.x, 1, 1);
-    // Optionally, destroy the effect after some time (if it's a particle system, it may auto-destroy)
-    Destroy(slashEffect, 1f); // Adjust time as needed
-}
-
-void TopAttack()
-{
-    // Check if the "W" key is pressed and the left mouse button is clicked
-    if ((Input.GetKey(KeyCode.W) && Input.GetButtonDown("Attack")) && timeSinceAttack >= timeBetweenAttack)
-    {
-        timeSinceAttack = 0;
-        anim.SetTrigger("TopAttack"); // Trigger the UpAttack animation
-        audioManager.PlaySFX(audioManager.attack);
-
-        // Up Attack Logic
-        Collider2D[] hitEnemiesUp = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableLayer);
-        
-        // [LOG1:SH]
-        Collider2D[] hitBosses = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableBossLayer);
-        HandleAttack(hitEnemiesUp);
-        HandleAttack(hitBosses);
+        HandleSpecialAttack(hitEnemies);
+        HandleSpecialAttack(hitBosses);
     }
 
-    // Update time since the last attack
-    timeSinceAttack += Time.deltaTime;
-}
-
-
-
-// [LOG1:SH]
-private void HandleAttack(Collider2D[] hitEntities)
-{
-    if (!isAttacking) return; // Return if not attacking
-
-    bool hit = false; // Flag to check if any enemy was hit
-
-    foreach (Collider2D entity in hitEntities)
+    public void StopAttack()
     {
-        if (entity.GetComponent<Enemy>() != null)
+        isAttacking = false; // Stop dealing damage
+    }
+
+
+
+    private void InstantiateSlashEffect()
+    {
+        // Create the slash effect instance at the player's position
+        GameObject slashEffect = Instantiate(slashEffectPrefab, attackPoint.position, Quaternion.identity);
+        // Optionally, you can set the effect to face the right direction
+        slashEffect.transform.localScale = new Vector3(transform.localScale.x, 1, 1);
+        // Optionally, destroy the effect after some time (if it's a particle system, it may auto-destroy)
+        Destroy(slashEffect, 1f); // Adjust time as needed
+    }
+
+    void TopAttack()
+    {
+        // Check if the "W" key is pressed and the left mouse button is clicked
+        if ((Input.GetKey(KeyCode.W) && Input.GetButtonDown("Attack")) && timeSinceAttack >= timeBetweenAttack)
         {
-            Enemy enemyComponent = entity.GetComponent<Enemy>();
-            Vector2 hitDirection = (entity.transform.position - transform.position).normalized;
-            float hitForce = 10f;
+            timeSinceAttack = 0;
+            anim.SetTrigger("TopAttack"); // Trigger the UpAttack animation
+            audioManager.PlaySFX(audioManager.attack);
 
-            enemyComponent.EnemyHit(damage, hitDirection, hitForce);
-            hit = true; // Set the flag to true since we hit an enemy
+            // Up Attack Logic
+            Collider2D[] hitEnemiesUp = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableLayer);
+            
+            // [LOG1:SH]
+            Collider2D[] hitBosses = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableBossLayer);
+            HandleAttack(hitEnemiesUp);
+            HandleAttack(hitBosses);
         }
-        else if (entity.GetComponent<BossMain>() != null)
-        {
-            entity.GetComponent<BossMain>().TakeDamage(damage);
-            hit = true; // Set the flag to true since we hit a boss
-        }
+
+        // Update time since the last attack
+        timeSinceAttack += Time.deltaTime;
     }
 
-    if (hit)
+
+
+    // [LOG1:SH]
+    private void HandleAttack(Collider2D[] hitEntities)
     {
-        // Instantiate the slash effect only if we hit an enemy
-        InstantiateSlashEffect();
+        if (!isAttacking) return; // Return if not attacking
 
-        // Camera Shake
-        GetComponent<CameraShake>().lightCameraShakeEvent.Invoke();
+        bool hit = false; // Flag to check if any enemy was hit
+
+        foreach (Collider2D entity in hitEntities)
+        {
+            if (entity.GetComponent<Enemy>() != null)
+            {
+                Enemy enemyComponent = entity.GetComponent<Enemy>();
+                Vector2 hitDirection = (entity.transform.position - transform.position).normalized;
+                float hitForce = 10f;
+
+                enemyComponent.EnemyHit(damage, hitDirection, hitForce);
+                hit = true; // Set the flag to true since we hit an enemy
+            }
+            else if (entity.GetComponent<BossMain>() != null)
+            {
+                entity.GetComponent<BossMain>().TakeDamage(damage);
+                hit = true; // Set the flag to true since we hit a boss
+            }
+        }
+
+        if (hit)
+        {
+            // Instantiate the slash effect only if we hit an enemy
+            InstantiateSlashEffect();
+
+            HitStopTime(0.1f, 10, 0.035f); 
+
+            // Camera Shake
+            GetComponent<CameraShake>().lightCameraShakeEvent.Invoke();
+        }
     }
-}
+
+    private void HandleSpecialAttack(Collider2D[] hitEntities)
+    {
+        if (!isAttacking) return; // Return if not attacking
+
+        bool hit = false; // Flag to check if any enemy was hit
+
+        foreach (Collider2D entity in hitEntities)
+        {
+            if (entity.GetComponent<Enemy>() != null)
+            {
+                Enemy enemyComponent = entity.GetComponent<Enemy>();
+                Vector2 hitDirection = (entity.transform.position - transform.position).normalized;
+                float hitForce = 10f;
+
+                enemyComponent.EnemyHit(specialAttackDamage, hitDirection, hitForce);
+                hit = true; // Set the flag to true since we hit an enemy
+            }
+            else if (entity.GetComponent<BossMain>() != null)
+            {
+                entity.GetComponent<BossMain>().TakeDamage(specialAttackDamage);
+                hit = true; // Set the flag to true since we hit a boss
+            }
+        }
+
+        if (hit)
+        {
+            // Instantiate the slash effect only if we hit an enemy
+            // InstantiateSlashEffect();
+
+            HitStopTime(0.1f, 10, 0.1f); 
+
+            // Camera Shake
+            GetComponent<CameraShake>().heavyCameraShakeEvent.Invoke();
+        }
+    }
 
     // void Hit(Transform _attackTransform, Vector2 _attackArea, ref bool _recoilBool, Vector2 _recoilDir, float _recoilStrength)
     // {

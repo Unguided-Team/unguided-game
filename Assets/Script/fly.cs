@@ -80,8 +80,7 @@ public class Fly : Enemy
 {
     base.EnemyHit(damageDone, hitDirection, hitForce);
     
-    // Instantiate blood particles
-    Instantiate(bloodParticlePrefab, transform.position, Quaternion.identity);
+    // sound and blood particles in base EnemyHit in Enemy.cs
 
     if (health > 0)
     {
