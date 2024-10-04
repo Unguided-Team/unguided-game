@@ -15,10 +15,10 @@ public class PlayerController : MonoBehaviour
 
     //Input Variables
     public float xAxis, yAxis;
-    private bool attack = false;
+    public bool attack = false;
     private bool attack2 = false;
 
-    private bool isAttacking = false;
+    public bool isAttacking = false;
 
     //creates a singleton of the PlayerController
     public static PlayerController Instance;
@@ -71,8 +71,8 @@ public class PlayerController : MonoBehaviour
     [Header("Attack Settings:")]
     public Transform attackPoint;
     public float attackRange = 0.5f;
-    [SerializeField] private LayerMask attackableLayer; //the layer the player can attack and recoil off of
-    [SerializeField] private LayerMask attackableBossLayer; //[LOG1:SH]
+    [SerializeField] public LayerMask attackableLayer; //the layer the player can attack and recoil off of
+    [SerializeField] public LayerMask attackableBossLayer; //[LOG1:SH]
     [SerializeField] private float timeBetweenAttack;
     [SerializeField] private float timeBetweenSpecialAttack;
     private float timeSinceAttack;
@@ -281,7 +281,11 @@ public class PlayerController : MonoBehaviour
     {
         canDash = false;
         pState.dashing = true;
+
         anim.SetTrigger("Dashing");
+        anim.ResetTrigger("TopAttack");
+        anim.ResetTrigger("SpecialAttack");
+
         rb.gravityScale = 0;
         rb.velocity = new Vector2(transform.localScale.x * dashSpeed, 0);
         if (Grounded()) Instantiate(dashEffect, transform);
@@ -310,6 +314,13 @@ public class PlayerController : MonoBehaviour
         canDash = true;
     }
 
+    public void playNormalAttackSound()
+    {
+        audioManager.PlaySFX(audioManager.attack);
+    }
+
+    // set special attack sound here [LOG2: SH] [attach to animation]
+
     void Attack()
     {
         timeSinceAttack += Time.deltaTime;
@@ -317,19 +328,28 @@ public class PlayerController : MonoBehaviour
         if ((!Input.GetKey(KeyCode.W) && attack) && timeSinceAttack >= timeBetweenAttack)
         {
             timeSinceAttack = 0;
-            anim.SetTrigger("Attacking");
-            audioManager.PlaySFX(audioManager.attack);
+            if (Grounded())
+                anim.SetTrigger("Attacking");
+            else
+                anim.SetTrigger("JumpAttack");
+            anim.ResetTrigger("TopAttack");
+            anim.ResetTrigger("SpecialAttack");
             isAttacking = true; // Set attacking state
+        }
+    }
 
-            rb.velocity = Vector2.zero;
+    void TopAttack()
+    {
+        timeSinceAttack += Time.deltaTime;
 
-            // Side Attack Logic
-            Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableLayer);
-            
-            // [LOG1:SH]
-            Collider2D[] hitBosses = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableBossLayer);
-            HandleAttack(hitEnemies);
-            HandleAttack(hitBosses);
+        // Check if the "W" key is pressed and the left mouse button is clicked
+        if ((Input.GetKey(KeyCode.W) && Input.GetButtonDown("Attack")) && timeSinceAttack >= timeBetweenAttack)
+        {
+            timeSinceAttack = 0;
+            anim.SetTrigger("TopAttack"); // Trigger the UpAttack animation
+            anim.ResetTrigger("Attacking");
+            anim.ResetTrigger("SpecialAttack");
+            isAttacking = true;
         }
     }
 
@@ -340,14 +360,33 @@ public class PlayerController : MonoBehaviour
         {
             timeSinceSpecialAttack = 0;
             anim.SetTrigger("SpecialAttack");
+            anim.ResetTrigger("Attacking");
+            anim.ResetTrigger("TopAttack");
             
-            // set special attack sound here [LOG2: SH]
-            audioManager.PlaySFX(audioManager.attack);
-            
-            rb.velocity = Vector2.zero;
-
             isAttacking = true; // Set attacking state
         }
+    }
+
+    void performAttack()
+    {
+        // Attack Logic
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableLayer);
+        
+        // [LOG1:SH]
+        Collider2D[] hitBosses = Physics2D.OverlapCircleAll(attackPoint.position, attackRange, attackableBossLayer);
+        HandleAttack(hitEnemies);
+        HandleAttack(hitBosses);
+    }
+
+    void performTopAttack()
+    {
+        // Up Attack Logic
+        Collider2D[] hitEnemiesUp = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableLayer);
+        
+        // [LOG1:SH]
+        Collider2D[] hitBosses = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableBossLayer);
+        HandleTopAttack(hitEnemiesUp);
+        HandleTopAttack(hitBosses);
     }
 
     // called in the animation [LOG2: SH]
@@ -374,8 +413,6 @@ public class PlayerController : MonoBehaviour
         isAttacking = false; // Stop dealing damage
     }
 
-
-
     private void InstantiateSlashEffect()
     {
         // Create the slash effect instance at the player's position
@@ -386,32 +423,8 @@ public class PlayerController : MonoBehaviour
         Destroy(slashEffect, 1f); // Adjust time as needed
     }
 
-    void TopAttack()
-    {
-        // Check if the "W" key is pressed and the left mouse button is clicked
-        if ((Input.GetKey(KeyCode.W) && Input.GetButtonDown("Attack")) && timeSinceAttack >= timeBetweenAttack)
-        {
-            timeSinceAttack = 0;
-            anim.SetTrigger("TopAttack"); // Trigger the UpAttack animation
-            audioManager.PlaySFX(audioManager.attack);
-
-            // Up Attack Logic
-            Collider2D[] hitEnemiesUp = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableLayer);
-            
-            // [LOG1:SH]
-            Collider2D[] hitBosses = Physics2D.OverlapCircleAll(upAttackPoint.position, attackRange, attackableBossLayer);
-            HandleAttack(hitEnemiesUp);
-            HandleAttack(hitBosses);
-        }
-
-        // Update time since the last attack
-        timeSinceAttack += Time.deltaTime;
-    }
-
-
-
     // [LOG1:SH]
-    private void HandleAttack(Collider2D[] hitEntities)
+    public void HandleAttack(Collider2D[] hitEntities)
     {
         if (!isAttacking) return; // Return if not attacking
 
@@ -440,6 +453,39 @@ public class PlayerController : MonoBehaviour
             // Instantiate the slash effect only if we hit an enemy
             InstantiateSlashEffect();
 
+            HitStopTime(0.1f, 10, 0.035f); 
+
+            // Camera Shake
+            GetComponent<CameraShake>().lightCameraShakeEvent.Invoke();
+        }
+    }
+
+    private void HandleTopAttack(Collider2D[] hitEntities)
+    {
+        if (!isAttacking) return; // Return if not attacking
+
+        bool hit = false; // Flag to check if any enemy was hit
+
+        foreach (Collider2D entity in hitEntities)
+        {
+            if (entity.GetComponent<Enemy>() != null)
+            {
+                Enemy enemyComponent = entity.GetComponent<Enemy>();
+                Vector2 hitDirection = (entity.transform.position - transform.position).normalized;
+                float hitForce = 10f;
+
+                enemyComponent.EnemyHit(damage, hitDirection, hitForce);
+                hit = true; // Set the flag to true since we hit an enemy
+            }
+            else if (entity.GetComponent<BossMain>() != null)
+            {
+                entity.GetComponent<BossMain>().TakeDamage(damage);
+                hit = true; // Set the flag to true since we hit a boss
+            }
+        }
+
+        if (hit)
+        {
             HitStopTime(0.1f, 10, 0.035f); 
 
             // Camera Shake
@@ -765,6 +811,9 @@ IEnumerator StartTimeAgain(float _delay)
         } 
 
         anim.SetBool("WallSticking", onWall() && !Grounded());
+        anim.ResetTrigger("Attacking");
+        anim.ResetTrigger("TopAttack");
+        anim.ResetTrigger("SpecialAttack");
     }
 
    void Jump() 

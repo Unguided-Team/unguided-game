@@ -66,6 +66,9 @@ TagManager:
   - name: Player
     uniqueID: 3498471421
     locked: 0
+  - name: Special Foreground
+    uniqueID: 2991406173
+    locked: 0
   - name: Overlay
     uniqueID: 2937756079
     locked: 0

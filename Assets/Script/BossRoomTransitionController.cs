@@ -45,7 +45,7 @@ public class BossRoomTransitionController : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         // !!CHANGELATER: add check for boss not dead
-        if (collision.gameObject.CompareTag("Player") && isInTransitionTrigger)
+        if (collision.gameObject.CompareTag("Player") && isInTransitionTrigger && !boss.GetComponent<BossMain>().isDead)
         {
             isInTransitionTrigger = false;
 

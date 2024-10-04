@@ -57,6 +57,8 @@ public class BossMain : MonoBehaviour
     private bool used60PHeal = false;
     private bool used80PHeal = false;
 
+    public bool isDead = false;
+
     private float healInterruptionTimer = 0;
 
 
@@ -172,6 +174,7 @@ public class BossMain : MonoBehaviour
         if (health <= 0) 
         {
             anim.SetBool("Dead", true);
+            isDead = true;
             Physics2D.IgnoreCollision(bossBodyCollider.GetComponent<BoxCollider2D>(), playerCollider);
         }
 
@@ -216,6 +219,7 @@ public class BossMain : MonoBehaviour
         health = maxHealth;
         resetHeals();
         anim.SetBool("Dead", false);
+        isDead = false;
         sr.enabled = true;
         bossBodyCollider.GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = true;
