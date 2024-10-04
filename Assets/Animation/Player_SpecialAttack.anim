@@ -164,6 +164,13 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
+  - time: 0
+    functionName: playSpecialAttackSound
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
   - time: 1.0833334
     functionName: MakePlayerInvincible
     data: 
@@ -186,14 +193,14 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.75
-    functionName: StopAttack
+    functionName: MakePlayerMobile
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
   - time: 1.75
-    functionName: MakePlayerMobile
+    functionName: StopAttack
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -55,6 +55,13 @@ public class Enemy : MonoBehaviour
 
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         bonfireUsedEvent = playerObject.GetComponent<BonfireBehaviour>().bonfireUsedEvent;
+
+        BoxCollider2D[] a = GetComponents<BoxCollider2D>(); 
+        for (int i = 0; i < 2; ++i)
+        {
+            if (!a[i].isTrigger)
+                Physics2D.IgnoreCollision(a[i], playerObject.GetComponent<BoxCollider2D>());
+        }
     }
 
     protected virtual void Update()
@@ -78,6 +85,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
+            DisableComponents();
             HandleDeath();
         }
     }
@@ -87,7 +95,6 @@ public class Enemy : MonoBehaviour
         anim.SetBool("isDead", true);
         ChangeState(EnemyStates.fly_Death);
 
-        DisableComponents();
         TriggerRespawn();
     }
 
@@ -110,7 +117,7 @@ public class Enemy : MonoBehaviour
 
         // Re-enable components
         sr.enabled = true; // Enable the SpriteRenderer
-        BoxCollider2D[] a = GetComponents<BoxCollider2D>(); // Disable the BoxCollider2D
+        BoxCollider2D[] a = GetComponents<BoxCollider2D>(); // Reenable the BoxCollider2Ds
         for (int i = 0; i < 2; ++i)
         {
             a[i].enabled = true;
@@ -147,7 +154,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    protected void OnCollisionEnter2D(Collision2D _other)
+    protected void OnTriggerEnter2D(Collider2D _other)
     {
         if (_other.gameObject.CompareTag("Player") && !PlayerController.Instance.pState.invincible)
         {

@@ -7885,10 +7885,18 @@ MonoBehaviour:
   death: {fileID: 8300000, guid: 9cd3c72e44068dd4baac18a962858ced, type: 3}
   jump: {fileID: 0}
   dash: {fileID: 8300000, guid: 9e3a2cc4a8851a049a298baf89a8b656, type: 3}
-  land: {fileID: 8300000, guid: 3b58e2d6cf76793429e95684b9842379, type: 3}
-  attack: {fileID: 8300000, guid: 2164162519160834e8cd8a228b464799, type: 3}
+  land: {fileID: 8300000, guid: c378985ae791f424a817ee3cc522253e, type: 3}
+  attack: {fileID: 8300000, guid: 6d649d70a2e511845a81f32a890811dd, type: 3}
   takedamage: {fileID: 8300000, guid: a43487a559a4f704caa9d7397e809d27, type: 3}
   bonfireidle: {fileID: 8300000, guid: 5a8df6ac1ef7f9148ba3cbe91c0096d2, type: 3}
+  specialAttack: {fileID: 8300000, guid: 5e42c8b5dfab9504abd53c443296b355, type: 3}
+  playerWalkStep: {fileID: 8300000, guid: 07845f543be5dcb4a9e9beb8d3b0db57, type: 3}
+  defaultPiano: {fileID: 8300000, guid: ebb75fc15d9bc104d831975453a9ca36, type: 3}
+  bossFightIntro: {fileID: 8300000, guid: 21594636a02504c4986c2c9979e33fbe, type: 3}
+  bossFightMainLoop: {fileID: 8300000, guid: 2448071716b30a9459ad58ad7795834a, type: 3}
+  bossFightOutro: {fileID: 8300000, guid: 3a15f0d84cc615346b63c1d4e2b59328, type: 3}
+  fadeInSpeed: 0.5
+  fadeOutSpeed: 0.5
   musicVolume: 30
   sfxVolume: 0.4
 --- !u!4 &798943148
@@ -74999,7 +75007,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 27.300049, y: 12.800049}
+  m_AnchoredPosition: {x: 27.300049, y: 12.800079}
   m_SizeDelta: {x: 121.3752, y: 121.3752}
   m_Pivot: {x: 0, y: 1}
 --- !u!212 &5890692117863710865

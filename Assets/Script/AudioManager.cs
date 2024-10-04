@@ -8,8 +8,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
 
-    [Header("Audio Clip")]
-
+    [Header("SFX")]
     public AudioClip background;
     public AudioClip death;
     public AudioClip jump;
@@ -18,8 +17,20 @@ public class AudioManager : MonoBehaviour
     public AudioClip attack;
     public AudioClip takedamage;
     public AudioClip bonfireidle;
+    public AudioClip specialAttack;
+    public AudioClip playerWalkStep;
+
+    [Header("BGM")]
+    public AudioClip defaultPiano;
+    public AudioClip bossFightIntro;
+    public AudioClip bossFightMainLoop;
+    public AudioClip bossFightOutro;
+
+    [Header("Music Fade Settings")]
+    [SerializeField] private float fadeInSpeed = 0.05f;
+    [SerializeField] private float fadeOutSpeed = 0.05f;
     
-    [Header("Volume Settings")]
+    [Header("Volume Setting")]
     [Range(0f, 100f)] public float musicVolume = 0.5f; // Volume for music
     [Range(0f, 100f)] public float sfxVolume = 0.5f;
     
@@ -31,6 +42,18 @@ public class AudioManager : MonoBehaviour
             musicSource.Play();
     }
 
+    public void PlayBGM(AudioClip clip)
+    {
+        if (clip == null)
+        {
+            Debug.LogError("Attempted to play a BGM, but the clip is null!");
+            return; // Exit the method if the clip is null
+        }
+
+        musicSource.volume = musicVolume;
+        musicSource.GetComponent<AudioSource>().Play(0);
+    }
+
     public void PlaySFX(AudioClip clip)
     {
         if (clip == null)
@@ -40,6 +63,47 @@ public class AudioManager : MonoBehaviour
         }
         SFXSource.volume = sfxVolume;
         SFXSource.PlayOneShot(clip);
+    }
+
+    public void StartFadeInBGM(AudioClip clip)
+    {
+        StartCoroutine(FadeInBGM(clip));
+    }
+
+    public void StartFadeOutBGM(AudioClip clip = null)
+    {
+        StartCoroutine(FadeOutBGM(clip));
+    }
+
+    public IEnumerator FadeInBGM(AudioClip clip)
+    {
+        float maxVol =  musicSource.volume;
+        musicSource.volume = 0;
+        musicSource.GetComponent<AudioSource>().clip = clip;
+        musicSource.GetComponent<AudioSource>().Play(0);
+
+        while (musicSource.volume < maxVol)
+        {
+            musicSource.volume += (musicSource.volume + fadeInSpeed <= maxVol ? fadeInSpeed : maxVol - musicSource.volume);
+            yield return new WaitForSeconds(0.1f);
+        }
+        musicSource.volume = maxVol;
+    }
+
+    public IEnumerator FadeOutBGM(AudioClip clip = null)
+    {
+        while (musicSource.volume > 0)
+        {
+            musicSource.volume -= (musicSource.volume + fadeOutSpeed > 0 ? fadeOutSpeed : musicSource.volume);
+            yield return new WaitForSeconds(0.1f);
+        }
+        musicSource.volume = 0;
+    }
+
+    // finish boss music
+    public void startBossMusic()
+    {
+        // StartFadeOutBGM();
     }
 }
 

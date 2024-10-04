@@ -242,6 +242,11 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("Walking", rb.velocity.x != 0 && Grounded()); 
     }
 
+    public void PlayMoveSound()
+    {
+        audioManager.PlaySFX(audioManager.playerWalkStep);
+    }
+
     public void MakePlayerInvincible()
     {
         pState.invincible = true;
@@ -319,6 +324,11 @@ public class PlayerController : MonoBehaviour
         audioManager.PlaySFX(audioManager.attack);
     }
 
+    public void playSpecialAttackSound()
+    {
+        audioManager.PlaySFX(audioManager.specialAttack);
+    }
+
     // set special attack sound here [LOG2: SH] [attach to animation]
 
     void Attack()
@@ -362,6 +372,8 @@ public class PlayerController : MonoBehaviour
             anim.SetTrigger("SpecialAttack");
             anim.ResetTrigger("Attacking");
             anim.ResetTrigger("TopAttack");
+
+            rb.velocity = Vector2.zero;
             
             isAttacking = true; // Set attacking state
         }
