@@ -13,7 +13,6 @@ public class BossRoomTransitionController : MonoBehaviour
     private bool isInTransitionTrigger = false;
     [SerializeField] private GameObject player;
     private Vector2 prevPos;
-    private bool crossedTheTrigger = false;
     private GameObject roomLocker;
 
     // Start is called before the first frame update
@@ -54,6 +53,8 @@ public class BossRoomTransitionController : MonoBehaviour
 
             Vector2 newPos = new Vector2(player.transform.position.x, player.transform.position.y);
             Vector2 triggerPos = new Vector2(transform.position.x, transform.position.y);
+
+            bool crossedTheTrigger = false;
 
             // since boss room is to the right
             if (prevPos.x < triggerPos.x && newPos.x > triggerPos.x)

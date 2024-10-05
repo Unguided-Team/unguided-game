@@ -122,6 +122,154 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1357776
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1357777}
+  - component: {fileID: 1357780}
+  - component: {fileID: 1357779}
+  - component: {fileID: 1357778}
+  m_Layer: 0
+  m_Name: Tutorial Gravestone 2 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1357777
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357776}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.98, y: -12.602, z: 0}
+  m_LocalScale: {x: 3.3000002, y: 3.3000002, z: 3.3000002}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 756252315}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1357778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc4a8379114fd64ab02f3e658d81f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravestoneTextBox: {fileID: 1219499394}
+  gravestoneTextLine1: PRESS JUMP AND S TOGETHER TO JUMP DOWN FROM PLATFORMS
+  gravestoneTextLine2: 
+  gravestoneTextLine3: 
+  gravestoneTextLine4: 
+--- !u!61 &1357779
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357776}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.032274418, y: -0.29686058}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.2, y: 0.8}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22792555, y: 0.2154724}
+  m_EdgeRadius: 0
+--- !u!212 &1357780
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357776}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -5708697
+  m_SortingLayer: 1
+  m_SortingOrder: -10
+  m_Sprite: {fileID: 21300000, guid: 62ca3384b9ff43f4885b315238d648b4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &3970612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,6 +2072,154 @@ MonoBehaviour:
   gravestoneTextLine2: PRESS SPACE TO JUMP
   gravestoneTextLine3: PRESS SPACE WHILE JUMPING TO DOUBLE JUMP
   gravestoneTextLine4: PRESS SHIFT TO DASH
+--- !u!1 &486222015
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 486222016}
+  - component: {fileID: 486222019}
+  - component: {fileID: 486222018}
+  - component: {fileID: 486222017}
+  m_Layer: 0
+  m_Name: Tutorial Gravestone 1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &486222016
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486222015}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 46.92, y: -50.295, z: 0}
+  m_LocalScale: {x: 3.3000002, y: 3.3000002, z: 3.3000002}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 756252315}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &486222017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486222015}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc4a8379114fd64ab02f3e658d81f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravestoneTextBox: {fileID: 1219499394}
+  gravestoneTextLine1: RESTING AT A BONFIRE HEALS YOU
+  gravestoneTextLine2: IT WILL ALSO REVIVE DEAD ENEMIES
+  gravestoneTextLine3: 
+  gravestoneTextLine4: 
+--- !u!61 &486222018
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486222015}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.032274418, y: -0.29686058}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.2, y: 0.8}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 1
+  serializedVersion: 2
+  m_Size: {x: 0.22792555, y: 0.2154724}
+  m_EdgeRadius: 0
+--- !u!212 &486222019
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 486222015}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: -113162179
+  m_SortingLayer: 3
+  m_SortingOrder: 98
+  m_Sprite: {fileID: 21300000, guid: 62ca3384b9ff43f4885b315238d648b4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &496813229
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,7 +2954,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 441535239}
+  - {fileID: 486222016}
   - {fileID: 1578262069}
+  - {fileID: 1357777}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &764158973
@@ -2833,6 +3131,7 @@ MonoBehaviour:
   respawnTime: 3
   spawnPoint: {x: 0, y: 0, z: 0}
   playerObject: {fileID: 2742157404431993631}
+  isDead: 0
   chaseDistance: 5
   stunDuration: 2
   attackCooldown: 5
@@ -7895,9 +8194,9 @@ MonoBehaviour:
   specialAttack: {fileID: 8300000, guid: 5e42c8b5dfab9504abd53c443296b355, type: 3}
   playerWalkStep: {fileID: 8300000, guid: 07845f543be5dcb4a9e9beb8d3b0db57, type: 3}
   defaultPiano: {fileID: 8300000, guid: ebb75fc15d9bc104d831975453a9ca36, type: 3}
-  bossFightIntro: {fileID: 8300000, guid: 21594636a02504c4986c2c9979e33fbe, type: 3}
-  bossFightMainLoop: {fileID: 8300000, guid: 2448071716b30a9459ad58ad7795834a, type: 3}
-  bossFightOutro: {fileID: 8300000, guid: 3a15f0d84cc615346b63c1d4e2b59328, type: 3}
+  bossFightIntro: {fileID: 8300000, guid: ebe6472dd3508e145b3683a74cf2d500, type: 3}
+  bossFightMainLoop: {fileID: 8300000, guid: eebec9c18bdef394e9ad8d29599984f0, type: 3}
+  bossFightOutro: {fileID: 8300000, guid: 7b4b65240802a8a4c92f849705fc1437, type: 3}
   fadeInSpeed: 0.05
   fadeOutSpeed: 0.05
   musicVolume: 1
@@ -13636,6 +13935,7 @@ MonoBehaviour:
   respawnTime: 3
   spawnPoint: {x: 0, y: 0, z: 0}
   playerObject: {fileID: 2742157404431993631}
+  isDead: 0
   flipWaitTime: 1
   ledgeCheckX: 0.2
   ledgeCheckY: 1
@@ -15567,8 +15867,8 @@ MonoBehaviour:
   gravestoneTextBox: {fileID: 1219499394}
   gravestoneTextLine1: PRESS LMS TO ATTACK
   gravestoneTextLine2: PRESS W WHILE ATTACKING TO ATTACK UPWARDS
-  gravestoneTextLine3: PRESS RMS FOR SPECIAL ATTACK
-  gravestoneTextLine4: 
+  gravestoneTextLine3: PRESS LMS WHILE ON AIR TO PERFORM A JUMP ATTACK
+  gravestoneTextLine4: PRESS RMS FOR SPECIAL ATTACK
 --- !u!61 &1578262071
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -26669,7 +26969,7 @@ Transform:
   m_GameObject: {fileID: 6581918788466825874}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.7, y: -32.54, z: -10}
+  m_LocalPosition: {x: 7, y: 7.285, z: -10}
   m_LocalScale: {x: 100, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47027,7 +47327,7 @@ Transform:
   m_GameObject: {fileID: 2742157404431993631}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 92.7, y: -32.54, z: 0}
+  m_LocalPosition: {x: 7, y: 7.285, z: 0}
   m_LocalScale: {x: -3.213, y: 3.213, z: 0}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -70540,7 +70840,7 @@ Transform:
   m_GameObject: {fileID: 6208053057858302767}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 92.7, y: -32.54, z: -10}
+  m_LocalPosition: {x: 7, y: 7.285, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

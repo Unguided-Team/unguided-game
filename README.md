@@ -19,26 +19,26 @@ If you like our project, consider giving us a star on GitHub. Your support means
 ## Features
 Unguided is primarily a platformer game and the map layout has been made beautifully interconnected with that in mind. The overall direction of the player's progression is somewhat linear in that the player will end up at the same room containing the nameless king regardless of the places they choose to explore first.
 
-<!-- zoomed out picture of map here (remove filter) -->
+<img src="ReadmeFiles/map.png" alt="map" width="640">
 
 The movement in the game has been kept intentionally simple allowing the player to use jumps, double jumps, dashes and wall-climbing along with running as means of transverse the dungeon.
 
-<!-- giff showing player jumping down from starting area into the garden -->
+<img src="ReadmeFiles/platforming.gif" alt="platforming" width="640">
 
 In the classical fashion of Souls(-like) games, the player is able to rest at bonfires to heal up and save the last rested bonfire as a checkpoint.
 
-<!-- giff showing player resting at bonfire -->
+<img src="ReadmeFiles/rest_1.gif" alt="resting" width="640">
 
 Another important aspect of the game is the combat. The player has access to combo attacks, along with a special attack that trades off time for explosive AOE damage. 
 
-<!-- side by side gifs showing fighting in bloorborne area -->
+<img src="ReadmeFiles/bloodborne_1.gif" alt="bloodborne" width="640">
 
 And of course, what would a game like unguided be if not without a boss.
 
-<!-- gif showing boss combat -->
+<img src="ReadmeFiles/boss_1.gif" alt="boss" width="640">
 
 ## Requirements and Installation
-The game is very lightweight and will work smoothly on any version of Windows 10 and 11 (x86/x64). Unguided is **NOT** supported in ARM architecture computers yet.
+The game is very lightweight and will work smoothly on any version of Windows 10 and 11 (x86/x64). However, Unguided is **NOT** supported in ARM architecture computers yet.
 
 To try out the game, just download [unguided-win64.rar](https://github.com/sh4dman23/unguided-game/releases/latest) from the releases page if you are using a 64 bit system or download [unguided-win32.rar](https://github.com/sh4dman23/unguided-game/releases/latest) if you are on a 32 bit system. Unzip the rar after downloading it and run the game by starting "UNGUIDED.exe". The game may take a while to load on the first boot while it sets up required dependencies.
 
@@ -46,7 +46,6 @@ To try out the game, just download [unguided-win64.rar](https://github.com/sh4dm
 
 ## Credits
 As previously stated, Unguided was made as a school project by 6 people. You can find information of the developers of Unguided below:
-
 - Ahmed Thousif
     - Lead Programmer
     - [Github](https://github.com/DevThousif) | [Instagram](https://www.instagram.com/th0us1f)
@@ -64,7 +63,7 @@ As previously stated, Unguided was made as a school project by 6 people. You can
     - [Github](https://github.com/KanjiOhitsu) | [Instagram](https://www.instagram.com/shahir.chy)
 - Vivek Anand Singha
     - Editor | GUI & SFX Artist
-    - [Github](https://github.com/malviv) | [Instagram](https://www.instagram.com/visuals.malviv)
+    - [Github](https://github.com/malviv) | [Instagram](https://www.instagram.com/visuals.malviv) | [Fiverr]()
 
 Since we didn't have a music artist in our team, we decided to use music made by other wonderful artists. Their music have been credited below: 
 - [Gymnopédie No. 1](https://www.youtube.com/watch?v=eMnxjdGTK4w) by [Erik Satie](https://www.youtube.com/channel/UCUROzjdfvV996Ow-GqUGsUw)

@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour
     private AudioManager audioManager;
     private UnityEvent bonfireUsedEvent;
 
+    public bool isDead = false;
+
     protected virtual void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -93,6 +95,7 @@ public class Enemy : MonoBehaviour
     protected virtual void HandleDeath()
     {
         anim.SetBool("isDead", true);
+        isDead = true;
         ChangeState(EnemyStates.fly_Death);
 
         TriggerRespawn();
@@ -113,8 +116,11 @@ public class Enemy : MonoBehaviour
         health = startingHealth; // Reset health to starting value
         transform.position = spawnPoint; // Reset position
         anim.SetBool("isDead", false); // Reset death animation
+        isDead = false;
+        
         rb.velocity = Vector2.zero;
         ChangeState(EnemyStates.fly_Idle); // Set to idle state
+
 
         // Re-enable components
         sr.enabled = true; // Enable the SpriteRenderer

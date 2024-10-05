@@ -186,13 +186,14 @@ public class AudioManager : MonoBehaviour
         // fade out boss music
         while (musicSource.volume > 0)
         {
-            musicSource.volume -= fadeOutSpeed;
+            musicSource.volume -= 0.1f;
             yield return new WaitForSeconds(0.1f);
         }
         
         
         musicSource.volume = musicVolume;
-        PlayBGM(bossFightIntro);
+        if (!startedBossOutro)
+            PlayBGM(bossFightIntro);
         musicSource.loop = false;
 
         startedBossIntro = true;
@@ -216,9 +217,9 @@ public class AudioManager : MonoBehaviour
     public void startBossOutro()
     {
         PlayBGM(bossFightOutro);
+        startedBossOutro = true;
         musicSource.loop = false;
 
-        startedBossOutro = true;
         // StartCoroutine(changeFromOutroToDefault(bossFightIntro));
     }
 

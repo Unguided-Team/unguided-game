@@ -126,7 +126,7 @@ public class Fly : Enemy
 
         Collider2D playerCollider = Physics2D.OverlapCircle(attackPosition, attackRadius, playerLayerMask);
         
-        if (playerCollider != null && !PlayerController.Instance.pState.invincible)
+        if (playerCollider != null && !PlayerController.Instance.pState.invincible && !GetComponent<Enemy>().isDead)
         {
             Debug.Log("Fly enemy attacking player!");
             PlayerController.Instance.TakeDamage(damage);
