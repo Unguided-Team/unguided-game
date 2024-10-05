@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class BossRoomTransitionController : MonoBehaviour
 {
+    private AudioManager audioManager;
+
     public UnityEvent bonfireUsedEvent;
     [SerializeField] private GameObject boss;
 
@@ -25,12 +27,13 @@ public class BossRoomTransitionController : MonoBehaviour
 
         bonfireUsedEvent = player.GetComponent<BonfireBehaviour>().bonfireUsedEvent;
         bonfireUsedEvent.AddListener(deactivateDoorLock);
+
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if boss died unlock room 
     }
 
     private void OnTriggerEnter2D(Collider2D collision) 

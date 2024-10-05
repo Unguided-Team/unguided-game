@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] GameObject player;
+    [SerializeField] GameObject boss;
+
     [Header("Audio Source")]
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
@@ -33,13 +37,50 @@ public class AudioManager : MonoBehaviour
     [Header("Volume Setting")]
     [Range(0f, 100f)] public float musicVolume = 0.5f; // Volume for music
     [Range(0f, 100f)] public float sfxVolume = 0.5f;
+
+    private bool killedByBossMidSong = false;
+    private bool startedBossIntro = false;
+    private bool startedBossOutro = false;
     
     private void Start()
     {
-            musicSource.clip = background;
-            musicSource.loop = true; // Enable looping
-            musicSource.volume = musicVolume; // Set the background music volume
-            musicSource.Play();
+        musicSource.clip = background;
+        musicSource.loop = true; // Enable looping
+        musicSource.volume = musicVolume; // Set the background music volume
+        musicSource.Play();
+
+        boss.GetComponent<BossMain>().bossFightStarted.AddListener(startBossMusicIntroCoroutine);
+        boss.GetComponent<BossMain>().bossDied.AddListener(startBossOutro);
+        // boss.GetComponent<BossMain>().bossKilledPlayer.AddListener(fadeToDefaultBGM);
+        boss.GetComponent<BossMain>().bossKilledPlayer.AddListener(() => {killedByBossMidSong = true;});
+
+        boss.GetComponent<BossMain>().bossFightStarted.AddListener(() => {Debug.Log("boss fight started");});
+        boss.GetComponent<BossMain>().bossDied.AddListener(() => {Debug.Log("boss died");});
+        boss.GetComponent<BossMain>().bossKilledPlayer.AddListener(() => {Debug.Log("boss killed player");});
+    }
+
+    public void Update()
+    {
+        if (startedBossIntro && !musicSource.isPlaying && !killedByBossMidSong && !startedBossOutro)
+        {
+            startBossMusicLoop();
+            startedBossIntro = false;
+        }
+
+        if (startedBossOutro && !musicSource.isPlaying && !killedByBossMidSong)
+        {
+            changeToDefaultBGM();
+            startedBossOutro = false;
+            startedBossIntro = false;
+        }
+
+        if (killedByBossMidSong)
+        {
+            fadeToDefaultBGM();
+            killedByBossMidSong = false;
+            startedBossOutro = false;
+            startedBossIntro = false;
+        }
     }
 
     public void PlayBGM(AudioClip clip)
@@ -51,7 +92,8 @@ public class AudioManager : MonoBehaviour
         }
 
         musicSource.volume = musicVolume;
-        musicSource.GetComponent<AudioSource>().Play(0);
+        musicSource.clip = clip;
+        musicSource.Play();
     }
 
     public void PlaySFX(AudioClip clip)
@@ -75,12 +117,24 @@ public class AudioManager : MonoBehaviour
         StartCoroutine(FadeOutBGM(clip));
     }
 
-    public IEnumerator FadeInBGM(AudioClip clip)
+    private void StartFadeTransitionTo(AudioClip clip)
     {
-        float maxVol =  musicSource.volume;
+        StartCoroutine(FadeTransitionTo(clip));
+    }
+
+    private void startBossMusicIntroCoroutine()
+    {
+        StartCoroutine(startBossMusic());
+    }
+
+    private IEnumerator FadeInBGM(AudioClip clip)
+    {
+        float maxVol =  musicVolume;
         musicSource.volume = 0;
-        musicSource.GetComponent<AudioSource>().clip = clip;
-        musicSource.GetComponent<AudioSource>().Play(0);
+        // musicSource.GetComponent<AudioSource>().clip = clip;
+        // musicSource.GetComponent<AudioSource>().Play(0);
+        musicSource.clip = clip;
+        musicSource.Play();
 
         while (musicSource.volume < maxVol)
         {
@@ -90,20 +144,114 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = maxVol;
     }
 
-    public IEnumerator FadeOutBGM(AudioClip clip = null)
+    private IEnumerator FadeOutBGM(AudioClip clip = null)
     {
         while (musicSource.volume > 0)
         {
-            musicSource.volume -= (musicSource.volume + fadeOutSpeed > 0 ? fadeOutSpeed : musicSource.volume);
+            musicSource.volume -= fadeOutSpeed;
             yield return new WaitForSeconds(0.1f);
         }
         musicSource.volume = 0;
     }
 
-    // finish boss music
-    public void startBossMusic()
+    private IEnumerator FadeTransitionTo(AudioClip clip)
     {
-        // StartFadeOutBGM();
+        while (musicSource.volume > 0)
+        {
+            musicSource.volume -= fadeOutSpeed;
+            yield return new WaitForSeconds(0.1f);
+        }
+        musicSource.volume = 0;
+
+        float maxVol =  musicVolume;
+        musicSource.volume = 0;
+        // musicSource.GetComponent<AudioSource>().clip = clip;
+        // musicSource.GetComponent<AudioSource>().Play(0);
+        musicSource.clip = clip;
+        musicSource.Play();
+
+        while (musicSource.volume < maxVol)
+        {
+            musicSource.volume += (musicSource.volume + fadeInSpeed <= maxVol ? fadeInSpeed : maxVol - musicSource.volume);
+            yield return new WaitForSeconds(0.1f);
+        }
+        musicSource.volume = maxVol;
     }
+
+    // start boss music
+    public IEnumerator startBossMusic()
+    {
+        killedByBossMidSong = false;
+
+        // fade out boss music
+        while (musicSource.volume > 0)
+        {
+            musicSource.volume -= fadeOutSpeed;
+            yield return new WaitForSeconds(0.1f);
+        }
+        
+        
+        musicSource.volume = musicVolume;
+        PlayBGM(bossFightIntro);
+        musicSource.loop = false;
+
+        startedBossIntro = true;
+        // StartCoroutine(changeFromIntroToMainLoop(bossFightIntro));
+    }
+
+    // fix with new method [UNUSED]
+    private IEnumerator changeFromIntroToMainLoop(AudioClip intro)
+    {
+        yield return new WaitForSeconds(ClipDuration(intro));
+        if (!killedByBossMidSong)
+            startBossMusicLoop();
+    }
+
+    public void startBossMusicLoop()
+    {
+        PlayBGM(bossFightMainLoop);
+        musicSource.loop = true;
+    }
+
+    public void startBossOutro()
+    {
+        PlayBGM(bossFightOutro);
+        musicSource.loop = false;
+
+        startedBossOutro = true;
+        // StartCoroutine(changeFromOutroToDefault(bossFightIntro));
+    }
+
+    private IEnumerator changeFromOutroToDefault(AudioClip outro)
+    {
+        yield return new WaitForSeconds(outro.length); 
+        if (!killedByBossMidSong)
+            changeToDefaultBGM();
+    }
+
+    public void changeToDefaultBGM()
+    {
+        if (musicSource.clip == defaultPiano)
+            return;
+
+        musicSource.Stop();
+        StartFadeInBGM(defaultPiano);
+        musicSource.loop = true;
+    }
+
+    public void fadeToDefaultBGM()
+    {
+        if (musicSource.clip == defaultPiano)
+            return;
+        StartFadeTransitionTo(defaultPiano);
+        print("yes");
+        musicSource.loop = true;
+    }
+
+    private float ClipDuration(AudioClip clip)
+    {
+        return ((float) clip.samples / clip.frequency);
+    }
+
 }
 

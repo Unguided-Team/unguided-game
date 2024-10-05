@@ -7860,6 +7860,7 @@ GameObject:
   m_Component:
   - component: {fileID: 798943148}
   - component: {fileID: 798943147}
+  - component: {fileID: 798943149}
   m_Layer: 0
   m_Name: Audio Manager
   m_TagString: Audio
@@ -7879,6 +7880,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19f9066c9f90d9943bcd1e8229a850d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2742157404431993631}
+  boss: {fileID: 1642848043807569190}
   musicSource: {fileID: 1685299324}
   SFXSource: {fileID: 2091925572}
   background: {fileID: 8300000, guid: ebb75fc15d9bc104d831975453a9ca36, type: 3}
@@ -7895,9 +7898,9 @@ MonoBehaviour:
   bossFightIntro: {fileID: 8300000, guid: 21594636a02504c4986c2c9979e33fbe, type: 3}
   bossFightMainLoop: {fileID: 8300000, guid: 2448071716b30a9459ad58ad7795834a, type: 3}
   bossFightOutro: {fileID: 8300000, guid: 3a15f0d84cc615346b63c1d4e2b59328, type: 3}
-  fadeInSpeed: 0.5
-  fadeOutSpeed: 0.5
-  musicVolume: 30
+  fadeInSpeed: 0.05
+  fadeOutSpeed: 0.05
+  musicVolume: 1
   sfxVolume: 0.4
 --- !u!4 &798943148
 Transform:
@@ -7913,9 +7916,46 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1685299325}
+  - {fileID: 1140867771}
   - {fileID: 2091925573}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &798943149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798943146}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc118a2512d9a984db0f91aec9d8998b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2742157404431993631}
+  boss: {fileID: 1642848043807569190}
+  musicSource:
+  - {fileID: 1685299324}
+  - {fileID: 1140867770}
+  SFXSource: {fileID: 2091925572}
+  background: {fileID: 8300000, guid: ebb75fc15d9bc104d831975453a9ca36, type: 3}
+  death: {fileID: 8300000, guid: 9cd3c72e44068dd4baac18a962858ced, type: 3}
+  jump: {fileID: 0}
+  dash: {fileID: 8300000, guid: 9e3a2cc4a8851a049a298baf89a8b656, type: 3}
+  land: {fileID: 8300000, guid: c378985ae791f424a817ee3cc522253e, type: 3}
+  attack: {fileID: 8300000, guid: 6d649d70a2e511845a81f32a890811dd, type: 3}
+  takedamage: {fileID: 8300000, guid: a43487a559a4f704caa9d7397e809d27, type: 3}
+  bonfireidle: {fileID: 8300000, guid: 5a8df6ac1ef7f9148ba3cbe91c0096d2, type: 3}
+  specialAttack: {fileID: 8300000, guid: 5e42c8b5dfab9504abd53c443296b355, type: 3}
+  playerWalkStep: {fileID: 8300000, guid: 07845f543be5dcb4a9e9beb8d3b0db57, type: 3}
+  defaultPiano: {fileID: 8300000, guid: ebb75fc15d9bc104d831975453a9ca36, type: 3}
+  bossFightIntro: {fileID: 8300000, guid: 21594636a02504c4986c2c9979e33fbe, type: 3}
+  bossFightMainLoop: {fileID: 8300000, guid: 2448071716b30a9459ad58ad7795834a, type: 3}
+  bossFightOutro: {fileID: 8300000, guid: 3a15f0d84cc615346b63c1d4e2b59328, type: 3}
+  fadeInSpeed: 0.05
+  fadeOutSpeed: 0.05
+  musicVolume: 1
+  sfxVolume: 0.4
 --- !u!1 &801310136
 GameObject:
   m_ObjectHideFlags: 0
@@ -14164,6 +14204,134 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1140867769
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140867771}
+  - component: {fileID: 1140867770}
+  m_Layer: 0
+  m_Name: Music 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1140867770
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140867769}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1140867771
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140867769}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 798943148}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1166092320
 GameObject:
   m_ObjectHideFlags: 0
@@ -16002,7 +16170,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -33920,7 +34088,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02872784, y: -0.050822973}
+  m_Offset: {x: -0.66878164, y: -0.050822973}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -33931,7 +34099,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.1116981, y: 0.85415876}
+  m_Size: {x: 1.506717, y: 0.85415876}
   m_EdgeRadius: 0
 --- !u!212 &2255305427807052561
 SpriteRenderer:
@@ -49118,7 +49286,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.028146189, y: -0.05863799}
+  m_Offset: {x: -0.6748473, y: -0.058637977}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -49129,7 +49297,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 1
   serializedVersion: 2
-  m_Size: {x: 0.118075915, y: 0.85457563}
+  m_Size: {x: 1.524063, y: 0.85457563}
   m_EdgeRadius: 0
 --- !u!1 &3576477855779970626
 GameObject:
@@ -56695,6 +56863,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72f467b5531c2b14db3fa14106fe0cba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossFightStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  bossKilledPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  bossDied:
+    m_PersistentCalls:
+      m_Calls: []
   bonfireUsedEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -59565,7 +59742,7 @@ MonoBehaviour:
   attackableBossLayer:
     serializedVersion: 2
     m_Bits: 512
-  timeBetweenAttack: 0.005
+  timeBetweenAttack: 0
   timeBetweenSpecialAttack: 0
   damage: 2
   specialAttackDamage: 10
@@ -69313,7 +69490,7 @@ MonoBehaviour:
   heavyShakeIntensity: 2
   heavyShakeTime: 0.3
   lightShakeIntensity: 1.25
-  lightShakeTime: 0.1
+  lightShakeTime: 0.15
 --- !u!4 &5292263141175753256
 Transform:
   m_ObjectHideFlags: 0

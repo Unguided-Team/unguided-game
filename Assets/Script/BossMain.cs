@@ -6,6 +6,12 @@ using UnityEngine.Events;
 
 public class BossMain : MonoBehaviour
 {
+    public UnityEvent bossFightStarted;
+    public UnityEvent bossKilledPlayer;
+    public UnityEvent bossDied;
+
+    private bool fightStarted = false;
+
     public UnityEvent bonfireUsedEvent;
     private AudioManager audioManager;
     public float health;
@@ -58,6 +64,7 @@ public class BossMain : MonoBehaviour
     private bool used80PHeal = false;
 
     public bool isDead = false;
+    private bool playerKilled = false;
 
     private float healInterruptionTimer = 0;
 
@@ -93,6 +100,12 @@ public class BossMain : MonoBehaviour
 
         canDoAttack2InRange = CheckIfPlayerInAttack2Range();
         canDoAttack2InHitzone = CheckIfPlayerInAttack2Hitzone();
+
+        if (playerFound && !fightStarted) 
+        {
+            fightStarted = true;
+            bossFightStarted.Invoke();
+        }
     }
 
     public void LookAtPlayer()
@@ -175,7 +188,8 @@ public class BossMain : MonoBehaviour
         {
             anim.SetBool("Dead", true);
             isDead = true;
-            Physics2D.IgnoreCollision(bossBodyCollider.GetComponent<BoxCollider2D>(), playerCollider);
+
+            bossDied.Invoke();
         }
 
         if (isHealing)
@@ -215,12 +229,21 @@ public class BossMain : MonoBehaviour
 
     public void resetBoss()
     {
+        fightStarted = false;
+
         transform.position = originalPosition;
         health = maxHealth;
         resetHeals();
+
         anim.SetBool("Dead", false);
+        anim.Rebind();
+        anim.Update(0f);
+
         isDead = false;
+        playerKilled = false;
+
         sr.enabled = true;
+
         bossBodyCollider.GetComponent<BoxCollider2D>().enabled = false;
         GetComponent<BoxCollider2D>().enabled = true;
         Physics2D.IgnoreCollision(bossBodyCollider.GetComponent<BoxCollider2D>(), playerCollider, false);
@@ -238,7 +261,9 @@ public class BossMain : MonoBehaviour
     
     public void RemoveBoss()
     {
-        sr.enabled = false;
+        // sr.enabled = false;
+        Physics2D.IgnoreCollision(bossBodyCollider.GetComponent<BoxCollider2D>(), playerCollider);
+
         bossBodyCollider.GetComponent<BoxCollider2D>().enabled = false;
         bossRoomDoor.GetComponent<BossRoomTransitionController>().deactivateDoorLock();
     }
@@ -246,6 +271,13 @@ public class BossMain : MonoBehaviour
     public void DamagePlayer() 
     {
         PlayerController.Instance.TakeDamage(1f);
+
+        // died to boss = start fade to default bgm
+        if (!playerKilled && player.GetComponent<PlayerController>().Health <= 0) 
+        {
+            bossKilledPlayer.Invoke();
+            playerKilled = true;
+        }
     }
 
     void OnEnterCollision2D(Collision2D collision)

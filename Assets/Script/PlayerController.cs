@@ -432,7 +432,7 @@ public class PlayerController : MonoBehaviour
         // Optionally, you can set the effect to face the right direction
         slashEffect.transform.localScale = new Vector3(transform.localScale.x, 1, 1);
         // Optionally, destroy the effect after some time (if it's a particle system, it may auto-destroy)
-        Destroy(slashEffect, 1f); // Adjust time as needed
+        Destroy(slashEffect, 0.02f); // Adjust time as needed
     }
 
     // [LOG1:SH]
@@ -453,7 +453,7 @@ public class PlayerController : MonoBehaviour
                 enemyComponent.EnemyHit(damage, hitDirection, hitForce);
                 hit = true; // Set the flag to true since we hit an enemy
             }
-            else if (entity.GetComponent<BossMain>() != null)
+            else if (entity.GetComponent<BossMain>() != null && entity.GetComponent<BossMain>().isDead == false)
             {
                 entity.GetComponent<BossMain>().TakeDamage(damage);
                 hit = true; // Set the flag to true since we hit a boss
@@ -489,7 +489,7 @@ public class PlayerController : MonoBehaviour
                 enemyComponent.EnemyHit(damage, hitDirection, hitForce);
                 hit = true; // Set the flag to true since we hit an enemy
             }
-            else if (entity.GetComponent<BossMain>() != null)
+            else if (entity.GetComponent<BossMain>() != null && entity.GetComponent<BossMain>().isDead == false)
             {
                 entity.GetComponent<BossMain>().TakeDamage(damage);
                 hit = true; // Set the flag to true since we hit a boss
@@ -522,7 +522,7 @@ public class PlayerController : MonoBehaviour
                 enemyComponent.EnemyHit(specialAttackDamage, hitDirection, hitForce);
                 hit = true; // Set the flag to true since we hit an enemy
             }
-            else if (entity.GetComponent<BossMain>() != null)
+            else if (entity.GetComponent<BossMain>() != null && entity.GetComponent<BossMain>().isDead == false)
             {
                 entity.GetComponent<BossMain>().TakeDamage(specialAttackDamage);
                 hit = true; // Set the flag to true since we hit a boss

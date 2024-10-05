@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
         TriggerRespawn();
     }
 
-    private void DisableComponents()
+    public void DisableComponents()
     {
         sr.enabled = false; // Disable the SpriteRenderer
         BoxCollider2D[] a = GetComponents<BoxCollider2D>(); // Disable the BoxCollider2D
@@ -113,6 +113,7 @@ public class Enemy : MonoBehaviour
         health = startingHealth; // Reset health to starting value
         transform.position = spawnPoint; // Reset position
         anim.SetBool("isDead", false); // Reset death animation
+        rb.velocity = Vector2.zero;
         ChangeState(EnemyStates.fly_Idle); // Set to idle state
 
         // Re-enable components

@@ -88,6 +88,7 @@ public class Fly : Enemy
     }
     else
     {
+        GetComponent<Enemy>().DisableComponents();
         Die();
     }
 }
