@@ -36,8 +36,14 @@ public class BonfireBehaviour : MonoBehaviour
             lastBonfireRestedAt = defaultBonfire;
 
         bonfireRestText.SetText("");
-    }
 
+        // start by resting 
+        pState.resting = true;
+
+        // rest at default bonfire when starting game 
+        // [!!CHANGELATER: change this to rest at the last saved bonfire when implementing saves]
+        restAtBonfire(defaultBonfire);
+    }
 
     // Update is called once per frame
     void Update()
@@ -96,6 +102,7 @@ public class BonfireBehaviour : MonoBehaviour
             GetComponent<PlayerController>().xAxis = -1;
         else 
             GetComponent<PlayerController>().xAxis = 1;
+
         GetComponent<PlayerController>().Flip();
 
         pState.resting = true;
@@ -104,7 +111,7 @@ public class BonfireBehaviour : MonoBehaviour
         bonfireRestText.SetText("PRESS Q TO GET UP");
         pState.dead = false;
         lastBonfireRestedAt = bonfire;
-        anim.SetBool("Resting", pState.resting);
+        anim.SetBool("Resting", true);
         bonfireUsedEvent.Invoke();
     }
 

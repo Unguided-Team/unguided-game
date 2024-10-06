@@ -66,7 +66,7 @@ public class BossMain : MonoBehaviour
     public bool isDead = false;
     private bool playerKilled = false;
 
-    private float healInterruptionTimer = 0;
+    // private float healInterruptionTimer = 0;
 
 
     // Start is called before the first frame update

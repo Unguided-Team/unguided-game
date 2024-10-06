@@ -58,12 +58,16 @@ public class Enemy : MonoBehaviour
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         bonfireUsedEvent = playerObject.GetComponent<BonfireBehaviour>().bonfireUsedEvent;
 
+        // turn off collision of player with the body collider
         BoxCollider2D[] a = GetComponents<BoxCollider2D>(); 
         for (int i = 0; i < 2; ++i)
         {
             if (!a[i].isTrigger)
                 Physics2D.IgnoreCollision(a[i], playerObject.GetComponent<BoxCollider2D>());
         }
+
+        // event will respawn enemy
+        bonfireUsedEvent.AddListener(Respawn);
     }
 
     protected virtual void Update()
@@ -96,9 +100,8 @@ public class Enemy : MonoBehaviour
     {
         anim.SetBool("isDead", true);
         isDead = true;
+        rb.velocity = Vector2.zero;
         ChangeState(EnemyStates.fly_Death);
-
-        TriggerRespawn();
     }
 
     public void DisableComponents()
@@ -135,7 +138,7 @@ public class Enemy : MonoBehaviour
     public void TriggerRespawn()
     {
         // StartCoroutine(RespawnCoroutine());
-        bonfireUsedEvent.AddListener(Respawn);
+        // bonfireUsedEvent.AddListener(Respawn);
     }
 
     private IEnumerator RespawnCoroutine()

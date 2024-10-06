@@ -31,14 +31,14 @@ public class AudioManagerRe : MonoBehaviour
     public AudioClip bossFightOutro;
 
     [Header("Music Fade Settings")]
-    [SerializeField] private float fadeInSpeed = 0.05f;
-    [SerializeField] private float fadeOutSpeed = 0.05f;
+    // [SerializeField] private float fadeInSpeed = 0.05f;
+    // [SerializeField] private float fadeOutSpeed = 0.05f;
     
     [Header("Volume Setting")]
     [Range(0f, 100f)] public float musicVolume = 1f; // Volume for music
     [Range(0f, 100f)] public float sfxVolume = 0.4f;
 
-    private bool killedByBossMidSong = false;
+    // private bool killedByBossMidSong = false;
 
     private int selectedMusicSource = 0;
     private double goalTime;
@@ -53,7 +53,7 @@ public class AudioManagerRe : MonoBehaviour
         boss.GetComponent<BossMain>().bossFightStarted.AddListener(PlayBossIntro);
         // boss.GetComponent<BossMain>().bossDied.AddListener(startBossOutro);
         // boss.GetComponent<BossMain>().bossKilledPlayer.AddListener(fadeToDefaultBGM);
-        boss.GetComponent<BossMain>().bossKilledPlayer.AddListener(() => {killedByBossMidSong = true;});
+        // boss.GetComponent<BossMain>().bossKilledPlayer.AddListener(() => {killedByBossMidSong = true;});
 
         boss.GetComponent<BossMain>().bossFightStarted.AddListener(() => {Debug.Log("boss fight started");});
         boss.GetComponent<BossMain>().bossDied.AddListener(() => {Debug.Log("boss died");});
