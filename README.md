@@ -21,7 +21,7 @@ Unguided is primarily a platformer game and the map layout has been made beautif
 
 <img src="ReadmeFiles/map.png" alt="map" width="640">
 
-The movement in the game has been kept intentionally simple allowing the player to use jumps, double jumps, dashes and wall-climbing along with running as means of transverse the dungeon.
+The movement in the game has been kept intentionally simple allowing the player to use jumps, double jumps, dashes and wall-climbing along with running as means of transversing the dungeon.
 
 <img src="ReadmeFiles/platforming.gif" alt="platforming" width="640">
 
@@ -29,7 +29,7 @@ In the classical fashion of Souls(-like) games, the player is able to rest at bo
 
 <img src="ReadmeFiles/rest_1.gif" alt="resting" width="640">
 
-Another important aspect of the game is the combat. The player has access to combo attacks, along with a special attack that trades off time for explosive AOE damage. 
+Another important aspect of the game is the combat. The player has access to combo attacks, along with a special attack that trades off time in exchange for explosive AOE damage. 
 
 <img src="ReadmeFiles/bloodborne_1.gif" alt="bloodborne" width="640">
 
