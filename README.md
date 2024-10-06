@@ -44,7 +44,7 @@ To try out the game, just download [unguided-win64.rar](https://github.com/sh4dm
 
 ## Credits
 As previously stated, Unguided was made as a school project by 6 people. You can find information of the developers of Unguided below:
-- Ahmed Thousif
+- Ahmed Thousif Thisham
     - Lead Programmer
     - [Github](https://github.com/DevThousif) | [Instagram](https://www.instagram.com/th0us1f)
 - Arham Saleh Chowdhury
