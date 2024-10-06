@@ -12,7 +12,7 @@ If you like our project, consider giving us a star on GitHub. Your support means
  
 ## Table of Contents
 - [Features](#features)
-- [Requirements and Installation](#minimum-requirements-and-installation)
+- [Requirements and Installation](#requirements-and-installation)
 - [Credits](#credits)
 
 
