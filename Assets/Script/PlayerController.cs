@@ -176,7 +176,7 @@ public class PlayerController : MonoBehaviour
         RestoreTimeScale();
         FlashWhileInvincible();
 
-        if (pState.dashing || pState.dead || pState.immobile) return;
+        if (pState.dashing || pState.dead || pState.immobile || PauseMenu.GameIsPaused) return;
         
         if (!pState.dead) 
         {
@@ -259,11 +259,13 @@ public class PlayerController : MonoBehaviour
 
     public void MakePlayerImmobile()
     {
+        rb.velocity = Vector2.zero;
         pState.immobile = true;
     }
 
     public void MakePlayerMobile()
     {
+        rb.velocity = Vector2.zero;
         pState.immobile = false;
     }
 

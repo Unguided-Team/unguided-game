@@ -57,16 +57,16 @@ public class BossMain : MonoBehaviour
 
     Vector3 originalPosition;
 
-    private bool isHealing = false;
-    private bool used20PHeal = false;
-    private bool used40PHeal = false;
-    private bool used60PHeal = false;
-    private bool used80PHeal = false;
+    public bool isHealing = false;
+    public bool used20PHeal = false;
+    public bool used40PHeal = false;
+    public bool used60PHeal = false;
+    public bool used80PHeal = false;
 
     public bool isDead = false;
     private bool playerKilled = false;
 
-    // private float healInterruptionTimer = 0;
+    private float healInterruptionTimer = 0;
 
 
     // Start is called before the first frame update
@@ -106,6 +106,9 @@ public class BossMain : MonoBehaviour
             fightStarted = true;
             bossFightStarted.Invoke();
         }
+
+        if (isHealing)
+            healInterruptionTimer += Time.deltaTime;
     }
 
     public void LookAtPlayer()
@@ -192,7 +195,7 @@ public class BossMain : MonoBehaviour
             bossDied.Invoke();
         }
 
-        if (isHealing)
+        if (isHealing && healInterruptionTimer > 1f)
         {
             // got interrupted while healing
             isHealing = false;
@@ -206,24 +209,28 @@ public class BossMain : MonoBehaviour
             anim.SetBool("isHealing", true);
             isHealing = true;
             used20PHeal = true;
+            healInterruptionTimer = 0;
         }
         else if (health < 0.4 * maxHealth && !used40PHeal) 
         {
             anim.SetBool("isHealing", true);
             isHealing = true;
             used40PHeal = true;
+            healInterruptionTimer = 0;
         }
         else if (health < 0.6 * maxHealth && !used60PHeal) 
         {
             anim.SetBool("isHealing", true);
             isHealing = true;
             used60PHeal = true;
+            healInterruptionTimer = 0;
         }
         else if (health < 0.8 * maxHealth && !used80PHeal) 
         {
             anim.SetBool("isHealing", true);
             isHealing = true;
             used80PHeal = true;
+            healInterruptionTimer = 0;
         }
     }
 
@@ -240,6 +247,8 @@ public class BossMain : MonoBehaviour
         anim.Update(0f);
 
         isDead = false;
+        isInvulnerable = false;
+        playerFound = false;
         playerKilled = false;
 
         sr.enabled = true;
@@ -253,6 +262,7 @@ public class BossMain : MonoBehaviour
 
     public void resetHeals()
     {
+        isHealing = false;
         used20PHeal = false;
         used40PHeal = false;
         used60PHeal = false;

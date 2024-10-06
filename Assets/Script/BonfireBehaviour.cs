@@ -39,6 +39,8 @@ public class BonfireBehaviour : MonoBehaviour
 
         // start by resting 
         pState.resting = true;
+        pState.immobile = true;
+        pState.dead = false;
 
         // rest at default bonfire when starting game 
         // [!!CHANGELATER: change this to rest at the last saved bonfire when implementing saves]
@@ -74,7 +76,7 @@ public class BonfireBehaviour : MonoBehaviour
             bonfireRestText.SetText("PRESS Q TO GET UP");
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && (pState.canRest || pState.resting))
+        if (Input.GetKeyDown(KeyCode.Q) && (pState.canRest || pState.resting) && !PauseMenu.GameIsPaused)
         {
             if (!pState.resting) 
             {
@@ -84,7 +86,8 @@ public class BonfireBehaviour : MonoBehaviour
             {
                 // remove promt to exit rest
                 bonfireRestText.SetText("PRESS Q TO REST");
-                pState.immobile = false;
+
+                GetComponent<PlayerController>().MakePlayerMobile();
                 pState.resting = false;
                 pState.canRest = false;
             }
@@ -97,7 +100,8 @@ public class BonfireBehaviour : MonoBehaviour
     {
         GetComponent<PlayerController>().Health = GetComponent<PlayerController>().maxHealth;
         
-        pState.immobile = true;
+        GetComponent<PlayerController>().MakePlayerImmobile();
+
         if (bonfire.transform.position.x < transform.position.x)
             GetComponent<PlayerController>().xAxis = -1;
         else 

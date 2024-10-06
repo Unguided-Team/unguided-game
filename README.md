@@ -42,8 +42,6 @@ The game is very lightweight and will work smoothly on any version of Windows 10
 
 To try out the game, just download [unguided-win64.rar](https://github.com/sh4dman23/unguided-game/releases/latest) from the releases page if you are using a 64 bit system or download [unguided-win32.rar](https://github.com/sh4dman23/unguided-game/releases/latest) if you are on a 32 bit system. Unzip the rar after downloading it and run the game by starting "UNGUIDED.exe". The game may take a while to load on the first boot while it sets up required dependencies.
 
-**Please note that the game does not have an UI yet. To close the game, please press `alt` and `f4` keys together on your keyboard. `alt + f4` is a common way to exit any program running on the foreground. To get out of the game without closing it, press `alt` and `tab` keys together.**
-
 ## Credits
 As previously stated, Unguided was made as a school project by 6 people. You can find information of the developers of Unguided below:
 - Ahmed Thousif
@@ -63,7 +61,7 @@ As previously stated, Unguided was made as a school project by 6 people. You can
     - [Github](https://github.com/KanjiOhitsu) | [Instagram](https://www.instagram.com/shahir.chy)
 - Vivek Anand Singha
     - Editor | GUI & SFX Artist
-    - [Github](https://github.com/malviv) | [Instagram](https://www.instagram.com/visuals.malviv) | [Fiverr]()
+    - [Github](https://github.com/malviv) | [Instagram](https://www.instagram.com/visuals.malviv)
 
 Since we didn't have a music artist in our team, we decided to use music made by other wonderful artists. Their music have been credited below: 
 - [Gymnopédie No. 1](https://www.youtube.com/watch?v=eMnxjdGTK4w) by [Erik Satie](https://www.youtube.com/channel/UCUROzjdfvV996Ow-GqUGsUw)

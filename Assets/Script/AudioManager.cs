@@ -9,8 +9,8 @@ public class AudioManager : MonoBehaviour
     [SerializeField] GameObject boss;
 
     [Header("Audio Source")]
-    [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    public AudioSource musicSource;
+    public AudioSource SFXSource;
 
     [Header("SFX")]
     public AudioClip background;
