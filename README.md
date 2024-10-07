@@ -38,13 +38,13 @@ And of course, what would a game like unguided be if not without a boss.
 <img src="ReadmeFiles/boss_1.gif" alt="boss" width="640">
 
 ## Requirements and Installation
-The game is very lightweight and will work smoothly on any version of Windows 10 and 11 (x86/x64). However, Unguided is **NOT** supported in ARM architecture computers yet.
+The game is very lightweight and will work smoothly on any version of Windows 10 and 11 (x86/x64) and MAC OS with apple silicon chips. Note that, there is no supported build of Unguided for ARM architecture Windows yet.
 
-To try out the game, just download [unguided-win64.rar](https://github.com/sh4dman23/unguided-game/releases/latest) from the releases page if you are using a 64 bit system or download [unguided-win32.rar](https://github.com/sh4dman23/unguided-game/releases/latest) if you are on a 32 bit system. Unzip the rar after downloading it and run the game by starting "UNGUIDED.exe". The game may take a while to load on the first boot while it sets up required dependencies.
+To try out the game, for windows, just download [unguided-win64.rar](https://github.com/sh4dman23/unguided-game/releases/latest) from the releases page if you are using a 64 bit system or download [unguided-win32.rar](https://github.com/sh4dman23/unguided-game/releases/latest) if you are on a 32 bit system. Unzip the rar after downloading it and run the game by starting "UNGUIDED.exe". The game may take a while to load on the first boot while it sets up required dependencies.
 
 ## Credits
 As previously stated, Unguided was made as a school project by 6 people. You can find information of the developers of Unguided below:
-- Ahmed Thousif
+- Ahmed Thousif Thisham
     - Lead Programmer
     - [Github](https://github.com/DevThousif) | [Instagram](https://www.instagram.com/th0us1f)
 - Arham Saleh Chowdhury
