@@ -9,12 +9,13 @@ We made Unguided as a project for school in a 7 day time frame with no experienc
 As a side note, *most* art assets used in the game were made by our own artists including all of the character sprites as well as background assets present in the game.
 
 If you like our project, consider giving us a star on GitHub. Your support means a lot to us.
+
+We also made an animated trailer, so we'd love it if you would give it a watch on [YouTube](https://youtu.be/sATl1atIazY).
  
 ## Table of Contents
 - [Features](#features)
 - [Requirements and Installation](#requirements-and-installation)
 - [Credits](#credits)
-
 
 ## Features
 Unguided is primarily a platformer game and the map layout has been made beautifully interconnected with that in mind. The overall direction of the player's progression is somewhat linear in that the player will end up at the same room containing the nameless king regardless of the places they choose to explore first.
