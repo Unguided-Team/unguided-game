@@ -50,6 +50,9 @@ As previously stated, Unguided was made as a school project by 6 people. You can
 - Arham Saleh Chowdhury
     - Character Artist | Animator
     - [Github](https://github.com/Ardisif1) | [Instagram](https://www.instagram.com/arham_saleh_chy)
+- Vivek Anand Singha
+    - Editor | GUI & SFX Artist
+    - [Github](https://github.com/malviv) | [Instagram](https://www.instagram.com/visuals.malviv)
 - Saif Barakat Chowdhury
     - Programmer | Layout Designer
     - [Github](https://github.com/Saifbarakat) | [Instagram](https://www.instagram.com/_saifbarakat_)
@@ -59,9 +62,7 @@ As previously stated, Unguided was made as a school project by 6 people. You can
 - Shahir Ahmed Chowdhury
     - Environment & Asset Artist
     - [Github](https://github.com/KanjiOhitsu) | [Instagram](https://www.instagram.com/shahir.chy)
-- Vivek Anand Singha
-    - Editor | GUI & SFX Artist
-    - [Github](https://github.com/malviv) | [Instagram](https://www.instagram.com/visuals.malviv)
+
 
 Since we didn't have a music artist in our team, we decided to use music made by other wonderful artists. Their music have been credited below: 
 - [Gymnopédie No. 1](https://www.youtube.com/watch?v=eMnxjdGTK4w) by [Erik Satie](https://www.youtube.com/channel/UCUROzjdfvV996Ow-GqUGsUw)
