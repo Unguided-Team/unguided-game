@@ -25,17 +25,17 @@ The movement in the game has been kept intentionally simple allowing the player 
 
 <img src="ReadmeFiles/platforming.gif" alt="platforming" width="640">
 
-In the classical fashion of Souls(-like) games, the player is able to rest at bonfires to heal up and save the last rested bonfire as a checkpoint.
+In the classic fashion of Souls(-like) games, the player is able to rest at bonfires to heal up and save the last rested bonfire as a checkpoint.
 
-<img src="ReadmeFiles/rest_1.gif" alt="resting" width="640">
+<img src="ReadmeFiles/rest.gif" alt="resting" width="640">
 
 Another important aspect of the game is the combat. The player has access to combo attacks, along with a special attack that trades off time in exchange for explosive AOE damage. 
 
-<img src="ReadmeFiles/bloodborne_1.gif" alt="bloodborne" width="640">
+<img src="ReadmeFiles/graveyard.gif" alt="bloodborne" width="640">
 
 And of course, what would a game like unguided be if not without a boss.
 
-<img src="ReadmeFiles/boss_1.gif" alt="boss" width="640">
+<img src="ReadmeFiles/boss.gif" alt="boss" width="640">
 
 ## Requirements and Installation
 The game is very lightweight and will work smoothly on any version of Windows 10 and 11 (x86/x64) and MAC OS with apple silicon chips. Note that, there is no supported build of Unguided for ARM architecture Windows yet.
@@ -59,10 +59,9 @@ As previously stated, Unguided was made as a school project by 6 people. You can
 - Shahir Ahmed Chowdhury
     - Environment & Asset Artist
     - [Github](https://github.com/KanjiOhitsu) | [Instagram](https://www.instagram.com/shahir.chy)
- - Vivek Anand Singha
+- Vivek Anand Singha
     - Editor | GUI & SFX Artist
     - [Github](https://github.com/malviv) | [Instagram](https://www.instagram.com/visuals.malviv)
-
 
 Since we didn't have a music artist in our team, we decided to use music made by other wonderful artists. Their music have been credited below: 
 - [Gymnopédie No. 1](https://www.youtube.com/watch?v=eMnxjdGTK4w) by [Erik Satie](https://www.youtube.com/channel/UCUROzjdfvV996Ow-GqUGsUw)
