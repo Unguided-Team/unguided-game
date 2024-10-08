@@ -10,6 +10,8 @@ As a side note, *most* art assets used in the game were made by our own artists 
 
 If you like our project, consider giving us a star on GitHub. Your support means a lot to us.
 
+Check out our [itch.io](https://unguided-team.itch.io/unguided) page.
+
 We also made an animated trailer, so we'd love it if you would give it a watch on [YouTube](https://youtu.be/sATl1atIazY).
  
 ## Table of Contents
