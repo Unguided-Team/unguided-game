@@ -2,7 +2,7 @@
 
 ![Unguided-logo](ReadmeFiles/Logo.gif)
 
-Unguided is a 2D platformer metroidvania game inspired by the gameplay style of Hollow Knight and Ruin Valley and the artstyle of old retro games. It follows a masked adventurer clearing a dungeon before facing off against the nameless king of a long fallen kingdom. 
+Unguided is a 2D action-adventure platformer game inspired by the gameplay style of metroidvania games like Hollow Knight and the artstyle of old retro games. It follows a masked adventurer clearing a dungeon before facing off against the nameless king of a long fallen kingdom. 
 
 We made Unguided as a project for school in a 7 day time frame with no experience in game development using Unity and almost no experience in game development in general. Inspite of our inexpertise, we believe we were able to create a modest game in the time frame we got. However, due to the time limitations, we were not able to perfect all the systems in the game and since we were in constant development rush in a development environment we were unacquainted with, some bugs and glitches may pop up.
 
