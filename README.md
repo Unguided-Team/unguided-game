@@ -45,6 +45,8 @@ The game is very lightweight and will work smoothly on any version of Windows 10
 
 To try out the game, for windows, just download [unguided-win64.rar](https://github.com/sh4dman23/unguided-game/releases/latest) from the releases page if you are using a 64 bit system or download [unguided-win32.rar](https://github.com/sh4dman23/unguided-game/releases/latest) if you are on a 32 bit system. Unzip the rar after downloading it and run the game by starting "UNGUIDED.exe". The game may take a while to load on the first boot while it sets up required dependencies.
 
+This project was developed in [Unity 2022.3.47f1](https://unity.com/releases/editor/whats-new/2022.3.47). To use the code, clone this repository and open the project folder using Unity. 
+
 ## Credits
 As previously stated, Unguided was made as a school project by 6 people. You can find information of the developers of Unguided below:
 - Ahmed Thousif Thisham
