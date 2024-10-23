@@ -76,4 +76,4 @@ Since we didn't have a music artist in our team, we decided to use music made by
 ## Licenses
 The source code for Unguided is licensed under [MIT License](https://mit-license.org/). See [LICENSE.md](LICENSE.md) for more info.
 
-The artwork for unguided (everything inside the [Assets/Art/](Assets/Art/)) is licensed under [Creative Commons Attribution 4.0 International (CC-BY-4.0)](https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1). See [LICENSE.CCBY4.md](LICENSE.CCBY4.md) for more info.
+The artwork for Unguided (everything inside the [Assets/Art/](Assets/Art/)) is licensed under [Creative Commons Attribution 4.0 International (CC-BY-4.0)](https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1). See [LICENSE.CCBY4.md](LICENSE.CCBY4.md) for more info.
