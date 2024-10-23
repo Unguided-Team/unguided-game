@@ -18,7 +18,7 @@ We also made an animated trailer, so we'd love it if you would give it a watch o
 - [Features](#features)
 - [Requirements and Installation](#requirements-and-installation)
 - [Credits](#credits)
-- [License](#license)
+- [Licenses](#licenses)
 
 ## Features
 Unguided is primarily a platformer game and the map layout has been made beautifully interconnected with that in mind. The overall direction of the player's progression is somewhat linear in that the player will end up at the same room containing the nameless king regardless of the places they choose to explore first.
@@ -73,7 +73,7 @@ Since we didn't have a music artist in our team, we decided to use music made by
 - [Gymnopédie No. 1](https://www.youtube.com/watch?v=eMnxjdGTK4w) by [Erik Satie](https://www.youtube.com/channel/UCUROzjdfvV996Ow-GqUGsUw)
 - [BATTLE UNDER A BROKEN SKY](https://www.youtube.com/watch?v=1XGIl2pONm0) by [AZALI](https://www.youtube.com/@AZALI00013)
 
-## License
-The code for Unguided is licensed under [MIT License](https://mit-license.org/). See [LICENSE.md](LICENSE.md) for more info.
+## Licenses
+The source code for Unguided is licensed under [MIT License](https://mit-license.org/). See [LICENSE.md](LICENSE.md) for more info.
 
-The artwork for unguided is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1). See [LICENSE.CCBY4.md](LICENSE.CCBY4.md) for more info.
+The artwork for unguided (everything inside the [Assets/Art/](Assets/Art/)) is licensed under [Creative Commons Attribution 4.0 International (CC-BY-4.0)](https://creativecommons.org/licenses/by/4.0/?ref=chooser-v1). See [LICENSE.CCBY4.md](LICENSE.CCBY4.md) for more info.
