@@ -42,11 +42,11 @@ And of course, what would a game like unguided be if not without a boss.
 <img src="ReadmeFiles/boss.gif" alt="boss" width="640">
 
 ## Requirements and Installation
-The game is very lightweight and will work smoothly on any version of Windows 10 and 11 (x86/x64) and MAC OS with apple silicon chips. Note that, there is no supported build of Unguided for ARM architecture Windows yet.
+The game is very lightweight and will work smoothly on any version of Windows 10 and 11(x64/x86), and MAC OS. Note that, Unguided is NOT supported in ARM architecture computers yet.
 
-To try out the game, for windows, just download [unguided-win64.rar](https://github.com/sh4dman23/unguided-game/releases/latest) from the releases page if you are using a 64 bit system or download [unguided-win32.rar](https://github.com/sh4dman23/unguided-game/releases/latest) if you are on a 32 bit system. Unzip the rar after downloading it and run the game by starting "UNGUIDED.exe". The game may take a while to load on the first boot while it sets up required dependencies.
+To try out the game, for windows, download [unguided-win64.rar](https://github.com/Unguided-Team/unguided-game/releases/latest/download/unguided-win64.rar) from the releases page if you are using a 64 bit system or [unguided-win32.rar](https://github.com/Unguided-Team/unguided-game/releases/latest/download/unguided-win32.rar) if you are on a 32 bit system, and for mac, download [unguided-applesillicon+intel64.rar](https://github.com/Unguided-Team/unguided-game/releases/latest/download/unguided-applesillicon+intel64.rar).  Unzip the rar after downloading it and run the game by starting "Unguided.exe" inside the folder (for windows) or "unguided-applesillicon+intel64.app" (for mac). The game may take a while to load on the first boot while it sets up required dependencies.
 
-This project was developed in [Unity 2022.3.47f1](https://unity.com/releases/editor/whats-new/2022.3.47). To use the code, clone this repository and open the project folder using Unity. 
+This project was developed in [Unity 2022.3.47f1](https://unity.com/releases/editor/whats-new/2022.3.47). To use the code, clone this repository (or fork it and clone the forked repository onto your system), and open the project folder using Unity. 
 
 ## Credits
 As previously stated, Unguided was made as a school project by 6 people. You can find information of the developers of Unguided below:
